@@ -5,7 +5,8 @@ import { connectDB } from './db.js';
 import authRoutes from './routes/authRoute.js';
 import foodRoutes from './routes/foodRoute.js';
 import cartRoutes from './routes/cartRoute.js';
-import orderRoutes from './routes/orderRoute.js';
+import ratingRoutes from './routes/ratingRoute.js';
+import paymentRoutes from './routes/paymentRoute.js';
 
 dotenv.config();
 const app = express();
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/foods', foodRoutes);
 app.use('/api/cart', cartRoutes);
-app.use('/api/orders', orderRoutes);
+app.use('/api/ratings', ratingRoutes);
+app.use('/api/payments', paymentRoutes);
 
 connectDB();
 

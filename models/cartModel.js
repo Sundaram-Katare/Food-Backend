@@ -21,7 +21,7 @@ export const addToCart = async (user_id, food_id, quantity) => {
 
 export const getCartItems = async (user_id) => {
     const result = await pool.query(
-        `SELECT c.id AS cart_id, f.id AS food_id, f.name, f.price, f.image, c.quantity
+        `SELECT c.id AS cart_id, f.id AS food_id, f.name, f.price, f.image_url, c.quantity
          FROM cart c
          JOIN foods f ON c.food_id = f.id
          WHERE c.user_id = $1
@@ -29,8 +29,8 @@ export const getCartItems = async (user_id) => {
     );
 };
 
-export const deleteCartItem = async (user_id, cart_id) => {
+export const deleteCartItem = async (user_id, id) => {
     return await pool.query(
-        `DELETE FROM cart WHERE id = $1 AND user_id = $2 RETURNING *`, [user_id, cart_id]
+        `DELETE FROM cart WHERE id = $1 AND user_id = $2 RETURNING *`, [id, user_id]
     );
 };

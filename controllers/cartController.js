@@ -28,11 +28,11 @@ export const getCart = async (req, res) => {
 };
 
 export const removeCartItem = async (req, res) => {
-  const cart_id = req.params.cart_id;
+  const id = req.params.id;
   const user_id = req.user.id;
 
   try {
-    const result = await deleteCartItem(user_id, cart_id);
+    const result = await deleteCartItem(user_id, id);
     if (result.rowCount === 0) {
       return res.status(404).json({ error: 'Item not found in cart' });
     }
